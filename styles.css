@@ -24,6 +24,17 @@ h5 {
     margin-left: 1px;
 }
 
+h6 { 
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 11px;
+    color: #ffffff;
+    padding: 0px 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 1px;
+}
+
 .green-text {
     color: rgb(0, 255, 8);
 }
