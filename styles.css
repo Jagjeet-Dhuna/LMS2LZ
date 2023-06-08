@@ -1,0 +1,141 @@
+*{
+    padding: 0px 0px;
+    margin: 0px 0px;    
+}
+
+h1 { 
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+
+    text-align: left;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 24px;
+}
+
+h5 { 
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    color: #000000;
+    padding: 0px 0px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    margin-left: 1px;
+}
+
+.green-text {
+    color: rgb(0, 255, 8);
+}
+
+input {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    margin-right: 20px;
+    border: 1px solid #DBDBDB;
+
+    width: 300px;
+    padding: 3px;
+    
+}
+
+
+.container {
+    color: #DBDBDB;
+    padding: 6px 6px;
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 0.3fr 3.1fr 0.3fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "Component-name ."
+      "Input output"
+      "Button-1 Button-2"
+  }
+
+.title-1 { 
+    background-color: #14233C;
+    grid-area: Title; 
+}
+.input { 
+    grid-area: Input;
+}
+.output {
+    grid-area: output;
+}
+.component-name { 
+
+    grid-area: Component-name; 
+}
+
+.comp-1{
+    float: left;
+}
+
+.button-1 { 
+    grid-area: Button-1; 
+}
+
+.button-2 { 
+    grid-area: Button-2; 
+}
+
+.footer { 
+    font-family: 'Roboto', sans-serif;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #1E3459;
+    color: white;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+
+
+button {
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+
+    min-width: 150px;
+
+
+    padding: 10px 20px;
+    margin-bottom: 35px;
+}
+
+textarea {
+    margin-top: 0;
+    width: 49vw;
+    height: 70vh;
+    margin: 10px 0;
+    border: 1px solid #DBDBDB;
+    background-color: #ffffff;
+    outline: none;
+    resize: none;
+    font-size: 13px;
+    color: #404040;
+}
+
+textarea :focus{
+    border: none;
+    outline: none;
+}
+
+#text-output {
+    color: #1c1c1c;
+    padding-bottom: 3px;
+    margin: 10px 0px;
+    width: 49vw;
+    height: 70vh;
+    background-color: #F8F9FA;
+    border: none;
+    overflow-y: auto;
+    resize: none;
+}
