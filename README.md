@@ -2,6 +2,8 @@
 
 LMS2LZ is a lightweight web-based tool that allows you to convert your content from the LMS format to the Learning Zone format. The tool is designed to simplify the process of migrating educational resources from one system to another, making it easier for the content team.
 
+![6BFC2FF3-89DD-4F73-81F7-E2E6032DE222](https://github.com/Jagjeet-Dhuna/LMS2LZ/assets/48265165/8028c6e8-d469-4785-80e5-4ac1436df703)
+
 ## How it Works
 
 LMS2LZ leverages HTML, CSS, and JavaScript to perform the conversion seamlessly. The tool takes advantage of the power of web technologies, allowing you to run it directly in your web browser without the need for any additional software or installations.
