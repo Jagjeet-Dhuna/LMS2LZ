@@ -176,7 +176,7 @@ textarea :focus{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #d4d4d4;
+    background-color: #F8F9FA;
     transition: .4s;
 }
   
@@ -211,13 +211,6 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
-
-
-
-
-
-
-
 
 body.dark-mode {
     background-color: #1f1f1f;
