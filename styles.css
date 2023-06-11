@@ -176,7 +176,7 @@ textarea :focus{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #F8F9FA;
+    background-color: #ffffff;
     transition: .4s;
 }
   
@@ -188,7 +188,7 @@ textarea :focus{
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: #ffffff;
+    background-color: #14233C;
     transition: .4s;
 }
   

@@ -29,7 +29,6 @@ function convertText() {
     let end_time = Date.now();
     let elapsed_time = end_time - start_time;
 
-    // Use pre tag for output
     document.getElementById("text-output").innerHTML = '<pre>' + modified_lines.join("\n") + '</pre>';
 
     console.log(`The process took ${elapsed_time / 1000} seconds.`);
@@ -52,34 +51,23 @@ document.getElementById('copy-button').addEventListener('click', function() {
     console.log('Text copied to clipboard.');
 });
 
-
-// Dark mode
-
-/* ... rest of your JS ... */
-
-// Get the toggle switch
 var toggleSwitch = document.getElementById('toggle');
 
-// Check for saved 'darkMode' in localStorage
 if (localStorage.getItem('darkMode')) {
-    // If 'darkMode' is found in localStorage, apply it to body
+
     document.body.classList.add('dark-mode');
 
-    // Update the checkbox state
     toggleSwitch.checked = true;
 }
 
-// Add event listener to the checkbox
 toggleSwitch.addEventListener('change', function() {
-    // When checkbox is clicked, toggle the 'dark-mode' class
     document.body.classList.toggle('dark-mode');
     
-    // Save the current mode to localStorage
     if (document.body.classList.contains('dark-mode')) {
-        // Save 'darkMode'
+
         localStorage.setItem('darkMode', true);
     } else {
-        // Remove 'darkMode' from localStorage
+        
         localStorage.removeItem('darkMode');
     }
 });
