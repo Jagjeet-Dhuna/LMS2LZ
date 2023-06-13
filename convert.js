@@ -18,9 +18,9 @@ function convertText() {
             .replace(/\(azure\)\.username/g, '<span style="color: #3c5fde;">(' + azureDef + ').credentials(0).username</span>')
             .replace(/\(azure\)\.password/g, '<span style="color: #3c5fde;">(' + azureDef + ').credentials(0).password</span>')
             .replace(/\(azure\)\.subscriptionName/g, '<span style="color: #3c5fde;">(' + azureDef + ').subscriptionName</span>')
-            .replace(/\$gd\.com\(azure\)\.resourceGroups\(/g, "$gd.com(" + azureDef + ").resourceGroups(");
+            .replace(/\$gd\.com\(azure\)\.resourceGroups\(/g, '$gd.com(<span style="color: #3c5fde;">' + hyperVDef + '</span>).resourceGroups(');
 
-        if (modified_line.includes('resourceGroups')) {
+        if (modified_line.includes('resourceGroups') && !modified_line.includes(".name")) {
             modified_line = modified_line.replace(/(\.resourceGroups\(.+?\))/g, '$1.name');
         }
         modified_lines.push(modified_line);
@@ -81,7 +81,6 @@ document.getElementById('copy-button').addEventListener('click', function() {
     hiddenTextarea.select();
     document.execCommand('copy');
     document.body.removeChild(hiddenTextarea);
-
     if (outputText === "") {
         errorToast();
     } else {
@@ -90,6 +89,7 @@ document.getElementById('copy-button').addEventListener('click', function() {
     
 });
 
+//darkmode 
 
 var toggleSwitch = document.getElementById('toggle');
 
