@@ -34,7 +34,40 @@ function convertText() {
     console.log(`The process took ${elapsed_time / 1000} seconds.`);
 }
 
-document.getElementById('convert-button').addEventListener('click', convertText);
+function successToast() {
+    var x = document.getElementById("snackbarSuccess");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+function errorToast() {
+    var x = document.getElementById("snackbarError");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+function clearText() {
+    document.getElementById("text-input").value = "";
+    document.getElementById("text-output").innerHTML = "";
+    document.getElementById("azure-name").value = "";
+    document.getElementById("hyperV-name").value = "";
+
+    var x = document.getElementById("snackbarUpdated");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+document.getElementById('convert-button').addEventListener('click', function() {
+    let azureDef = document.getElementById("azure-name").value;
+    let hyperVDef = document.getElementById("hyperV-name").value;
+    let lines = document.getElementById("text-input").value;
+
+    if (azureDef === "" || hyperVDef === "" || lines === "") {
+        errorToast();
+    } else {
+        convertText();
+    }
+});
 
 document.getElementById('copy-button').addEventListener('click', function() {
     const outputText = document.getElementById('text-output').innerText;
@@ -48,8 +81,15 @@ document.getElementById('copy-button').addEventListener('click', function() {
     hiddenTextarea.select();
     document.execCommand('copy');
     document.body.removeChild(hiddenTextarea);
-    console.log('Text copied to clipboard.');
+
+    if (outputText === "") {
+        errorToast();
+    } else {
+        successToast();
+    }
+    
 });
+
 
 var toggleSwitch = document.getElementById('toggle');
 

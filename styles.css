@@ -127,7 +127,7 @@ button:active {
 textarea {
     margin-top: 0;
     width: 49vw;
-    height: 70vh;
+    height: 75vh;
     margin: 10px 0;
     border: 1px solid #DBDBDB;
     border-radius: 3px;
@@ -148,7 +148,7 @@ textarea :focus{
     padding-bottom: 3px;
     margin: 10px 0px;
     width: 49vw;
-    height: 70vh;
+    height: 75vh;
     background-color: #F8F9FA;
     border: none;
     overflow-y: auto;
@@ -243,3 +243,91 @@ body.dark-mode .footer {
     background-color: #05090f;
 }
 
+#snackbarSuccess {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #00bc4e;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 90.5%;
+    top: 65px;
+    font-size: 17px;
+    border-radius: 3px;
+}
+
+#snackbarSuccess.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+
+#snackbarError{
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #ff3a3a;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 90.5%;
+    top: 65px;
+    font-size: 17px;
+    border-radius: 3px;
+}
+
+#snackbarError.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#snackbarUpdated{
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #00bc4e;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 90.5%;
+    top: 65px;
+    font-size: 17px;
+    border-radius: 3px;
+}
+
+#snackbarUpdated.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {top: 0; opacity: 0;} 
+    to {top: 65px; opacity: 1;}
+}
+  
+@keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 65px; opacity: 1;}
+}
+  
+@-webkit-keyframes fadeout {
+    from {top: 65px; opacity: 1;} 
+    to {top: 0; opacity: 0;}
+}
+  
+@keyframes fadeout {
+    from {top: 65px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+}
