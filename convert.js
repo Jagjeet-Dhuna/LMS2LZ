@@ -4,9 +4,16 @@ function convertText() {
     let lines = document.getElementById("text-input").value.split("\n");
 
     let modified_lines = [];
+    originalText = lines.join("\n");  // Save the original text
     let start_time = Date.now();
 
     lines.forEach(line => {
+        // Add logic to handle image markdown syntax
+        let imageUrlMatch = line.match(/!\[.*\]\((.*)\)/);
+        if (imageUrlMatch) {
+            line = '<img src="' + imageUrlMatch[1] + '" alt="Screenshot" style="width: 100%;">';
+        }
+        
         let modified_line = line
             .replace(/\*\*\[\`/g, '<span style="color: #3c5fde;">!!</span>')
             .replace(/\`\]\(urn:gd:lg:a:send-vm-keys\)\*\*/g, '<span style="color: #3c5fde;">!!</span>')
@@ -32,6 +39,9 @@ function convertText() {
     document.getElementById("text-output").innerHTML = '<pre>' + modified_lines.join("\n") + '</pre>';
 
     console.log(`The process took ${elapsed_time / 1000} seconds.`);
+
+    // Store the original text in a data attribute for later use
+    document.getElementById("text-output").dataset.originalText = original_lines.join("\n");
 }
 
 function successToast() {
@@ -70,13 +80,12 @@ document.getElementById('convert-button').addEventListener('click', function() {
 });
 
 document.getElementById('copy-button').addEventListener('click', function() {
-    const outputText = document.getElementById('text-output').innerText;
     const hiddenTextarea = document.createElement('textarea');
     hiddenTextarea.style.position = 'fixed';
     hiddenTextarea.style.top = '0';
     hiddenTextarea.style.left = '0';
     hiddenTextarea.style.opacity = '0';
-    hiddenTextarea.value = outputText;
+    hiddenTextarea.value = originalText;
     document.body.appendChild(hiddenTextarea);
     hiddenTextarea.select();
     document.execCommand('copy');
