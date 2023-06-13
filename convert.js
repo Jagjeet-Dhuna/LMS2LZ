@@ -4,7 +4,7 @@ function convertText() {
     let lines = document.getElementById("text-input").value.split("\n");
 
     let modified_lines = [];
-    originalText = lines.join("\n");  // Save the original text
+    outputText = lines.join("\n");  // Save the original text
     let start_time = Date.now();
 
     lines.forEach(line => {
@@ -41,7 +41,7 @@ function convertText() {
     console.log(`The process took ${elapsed_time / 1000} seconds.`);
 
     // Store the original text in a data attribute for later use
-    document.getElementById("text-output").dataset.originalText = original_lines.join("\n");
+    document.getElementById("text-output").dataset.outputText = original_lines.join("\n");
 }
 
 function successToast() {
@@ -85,17 +85,13 @@ document.getElementById('copy-button').addEventListener('click', function() {
     hiddenTextarea.style.top = '0';
     hiddenTextarea.style.left = '0';
     hiddenTextarea.style.opacity = '0';
-    hiddenTextarea.value = originalText;
+    hiddenTextarea.value = outputText;
     document.body.appendChild(hiddenTextarea);
     hiddenTextarea.select();
     document.execCommand('copy');
     document.body.removeChild(hiddenTextarea);
-    if (outputText === "") {
-        errorToast();
-    } else {
-        successToast();
-    }
-    
+
+    successToast();
 });
 
 //darkmode 
