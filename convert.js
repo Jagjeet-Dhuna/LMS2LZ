@@ -1,18 +1,18 @@
+let outputText;
+let original_lines; // Define original_lines here
+
 function convertText() {
     let azureDef = document.getElementById("azure-name").value;
     let hyperVDef = document.getElementById("hyperV-name").value;
     let lines = document.getElementById("text-input").value.split("\n");
 
+    original_lines = [...lines]; // Store the original lines here
+
     let modified_lines = [];
-    outputText = lines.join("\n");  // Save the original text
+    
     let start_time = Date.now();
 
     lines.forEach(line => {
-        // Add logic to handle image markdown syntax
-        let imageUrlMatch = line.match(/!\[.*\]\((.*)\)/);
-        if (imageUrlMatch) {
-            line = '<img src="' + imageUrlMatch[1] + '" alt="Screenshot" style="width: 100%;">';
-        }
         
         let modified_line = line
             .replace(/\*\*\[\`/g, '<span style="color: #3c5fde;">!!</span>')
@@ -25,13 +25,16 @@ function convertText() {
             .replace(/\(azure\)\.username/g, '<span style="color: #3c5fde;">(' + azureDef + ').credentials(0).username</span>')
             .replace(/\(azure\)\.password/g, '<span style="color: #3c5fde;">(' + azureDef + ').credentials(0).password</span>')
             .replace(/\(azure\)\.subscriptionName/g, '<span style="color: #3c5fde;">(' + azureDef + ').subscriptionName</span>')
-            .replace(/\$gd\.com\(azure\)\.resourceGroups\(/g, '$gd.com(<span style="color: #3c5fde;">' + hyperVDef + '</span>).resourceGroups(');
+            .replace(/\(azure\)\.subscriptionId/g, '<span style="color: #3c5fde;">(' + azureDef + ').subscriptionId</span>')
+            .replace(/\$gd\.com\(azure\)\.resourceGroups\(/g, '$gd.com(<span style="color: #3c5fde;">' + azureDef + '</span>).resourceGroups(');
 
         if (modified_line.includes('resourceGroups') && !modified_line.includes(".name")) {
             modified_line = modified_line.replace(/(\.resourceGroups\(.+?\))/g, '$1.name');
         }
         modified_lines.push(modified_line);
     });
+
+    outputText = modified_lines.join("\n"); // Set outputText here
 
     let end_time = Date.now();
     let elapsed_time = end_time - start_time;
@@ -79,13 +82,19 @@ document.getElementById('convert-button').addEventListener('click', function() {
     }
 });
 
+function removeHtmlTags(text) {
+    var div = document.createElement("div");
+    div.innerHTML = text;
+    return div.textContent || div.innerText || "";
+}
+
 document.getElementById('copy-button').addEventListener('click', function() {
     const hiddenTextarea = document.createElement('textarea');
     hiddenTextarea.style.position = 'fixed';
     hiddenTextarea.style.top = '0';
     hiddenTextarea.style.left = '0';
     hiddenTextarea.style.opacity = '0';
-    hiddenTextarea.value = outputText;
+    hiddenTextarea.value = removeHtmlTags(outputText); // Use removeHtmlTags function here
     document.body.appendChild(hiddenTextarea);
     hiddenTextarea.select();
     document.execCommand('copy');
